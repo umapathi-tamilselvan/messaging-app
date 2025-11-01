@@ -1,0 +1,306 @@
+/* ===================================
+   Global Styles - Messaging App
+   =================================== */
+
+:root {
+    /* Instagram-inspired Color Palette */
+    --white: #ffffff;
+    --black: #000000;
+    --ig-blue: #0095f6;
+    --ig-blue-hover: #1877f2;
+    --ig-link-blue: #00376b;
+    
+    /* Instagram Gray Scale */
+    --ig-gray-50: #fafafa;
+    --ig-gray-100: #efefef;
+    --ig-gray-200: #dbdbdb;
+    --ig-gray-300: #c7c7c7;
+    --ig-gray-400: #8e8e8e;
+    --ig-gray-500: #737373;
+    --ig-gray-600: #262626;
+    --ig-gray-700: #1a1a1a;
+    
+    /* Primary Colors - Instagram Blue */
+    --primary-color: var(--ig-blue);
+    --primary-dark: var(--ig-blue-hover);
+    --primary-gradient: none;
+    --primary-subtle-gradient: none;
+    
+    /* Secondary Colors */
+    --secondary-color: var(--ig-gray-500);
+    --success-color: #00a850;
+    --danger-color: #ed4956;
+    --warning-color: #f79e57;
+    --info-color: var(--ig-blue);
+    
+    /* Neutral Colors */
+    --light-color: var(--ig-gray-50);
+    --dark-color: var(--ig-gray-600);
+    --gray-100: var(--ig-gray-50);
+    --gray-200: var(--ig-gray-200);
+    --gray-300: var(--ig-gray-300);
+    --gray-600: var(--ig-gray-500);
+    --gray-800: var(--ig-gray-700);
+    
+    /* Design Tokens - Instagram Style */
+    --border-radius: 8px;
+    --border-radius-lg: 12px;
+    --border-radius-xl: 22px;
+    --border-radius-full: 9999px;
+    --shadow-sm: none;
+    --shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    --shadow-lg: 0 2px 4px rgba(0, 0, 0, 0.08);
+    --shadow-xl: none;
+    --transition: all 0.2s ease;
+    --transition-fast: all 0.15s ease;
+    
+    /* Instagram Borders */
+    --ig-border: 1px solid var(--ig-gray-200);
+    --ig-border-thick: 1px solid var(--ig-gray-300);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    color: var(--ig-gray-600);
+    background: var(--white);
+    min-height: 100vh;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+/* Typography - Instagram Style */
+h1, h2, h3, h4, h5, h6 {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    font-weight: 600;
+    color: var(--ig-gray-600);
+    margin: 0;
+}
+
+/* Custom Scrollbar - Instagram Style */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--white);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--ig-gray-300);
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--ig-gray-400);
+}
+
+/* Navbar Customization - Instagram Style */
+.navbar-brand {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--ig-gray-600) !important;
+}
+
+.navbar {
+    background: var(--white) !important;
+    border-bottom: var(--ig-border);
+    padding: 8px 0;
+    box-shadow: none;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    color: var(--ig-gray-600) !important;
+    font-weight: 400;
+}
+
+.navbar-dark .navbar-nav .nav-link:hover {
+    color: var(--ig-gray-700) !important;
+}
+
+/* Card Enhancements */
+.card {
+    transition: var(--transition);
+}
+
+.hover-lift {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg) !important;
+}
+
+/* Button Enhancements - Instagram Style */
+.btn {
+    border-radius: var(--border-radius);
+    font-weight: 600;
+    transition: var(--transition);
+    border: none;
+    padding: 6px 16px;
+    font-size: 14px;
+}
+
+.btn-primary {
+    background: var(--ig-blue);
+    color: var(--white);
+    font-weight: 600;
+}
+
+.btn-primary:hover {
+    background: var(--ig-blue-hover);
+    color: var(--white);
+}
+
+.btn-primary:active {
+    opacity: 0.8;
+}
+
+.btn-success {
+    background: var(--success-color);
+    color: var(--white);
+}
+
+.btn-success:hover {
+    background: var(--success-color);
+    opacity: 0.9;
+}
+
+.btn-outline-secondary {
+    border: var(--ig-border);
+    color: var(--ig-gray-600);
+    background: var(--white);
+}
+
+.btn-outline-secondary:hover {
+    background: var(--ig-gray-50);
+    border-color: var(--ig-gray-300);
+}
+
+.rounded-pill {
+    border-radius: 50rem !important;
+}
+
+/* Avatar Sizes */
+.avatar-sm {
+    width: 32px;
+    height: 32px;
+}
+
+.avatar-md {
+    width: 48px;
+    height: 48px;
+}
+
+.avatar-lg {
+    width: 64px;
+    height: 64px;
+}
+
+/* Instagram Style Utilities */
+.bg-white {
+    background-color: var(--white) !important;
+}
+
+.bg-light {
+    background-color: var(--ig-gray-50) !important;
+}
+
+.text-muted {
+    color: var(--ig-gray-500) !important;
+}
+
+.border {
+    border: var(--ig-border) !important;
+}
+
+/* Animation Classes */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fade-in {
+    animation: fadeIn 0.6s ease-out;
+}
+
+.animate-fade-in-delay-1 {
+    animation: fadeIn 0.6s ease-out 0.2s backwards;
+}
+
+.animate-fade-in-delay-2 {
+    animation: fadeIn 0.6s ease-out 0.4s backwards;
+}
+
+/* Feature Icon */
+.feature-icon {
+    transition: var(--transition);
+}
+
+.feature-card:hover .feature-icon {
+    transform: scale(1.1);
+}
+
+/* Text Purple */
+.text-purple {
+    color: var(--purple) !important;
+}
+
+.bg-purple {
+    background-color: var(--purple) !important;
+}
+
+/* Utilities */
+.min-vh-50 {
+    min-height: 50vh;
+}
+
+.border-end-0 {
+    border-right: 0 !important;
+}
+
+.border-start-0 {
+    border-left: 0 !important;
+}
+
+/* Loading Spinner Overlay */
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+
+/* Responsive Utilities */
+@media (max-width: 768px) {
+    .display-3 {
+        font-size: 2rem;
+    }
+    
+    .display-4 {
+        font-size: 1.75rem;
+    }
+    
+    .display-5 {
+        font-size: 1.5rem;
+    }
+}
+

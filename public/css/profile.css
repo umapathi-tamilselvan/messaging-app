@@ -1,0 +1,66 @@
+/* Profile Settings Page Styles - Arattai Inspired */
+
+#avatarPreview {
+    transition: var(--transition);
+}
+
+#avatarPreview:hover {
+    transform: scale(1.05);
+    box-shadow: var(--shadow-lg);
+}
+
+#changeAvatarBtn {
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+}
+
+#changeAvatarBtn:hover {
+    transform: scale(1.1);
+    box-shadow: var(--shadow-lg);
+}
+
+.form-control:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.25rem rgba(37, 99, 235, 0.15);
+}
+
+.form-label {
+    color: var(--dark-color);
+}
+
+.card {
+    border-radius: var(--border-radius-lg);
+    overflow: hidden;
+}
+
+.card-header {
+    background: var(--white) !important;
+    border-bottom: var(--ig-border);
+    color: var(--ig-gray-600);
+}
+
+#bio {
+    resize: vertical;
+    min-height: 80px;
+}
+
+#bioCharCount {
+    font-weight: 500;
+    color: var(--gray-600);
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+    border: none;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, var(--primary-dark) 0%, #1e3a8a 100%);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+#avatarImage {
+    object-fit: cover;
+}
+

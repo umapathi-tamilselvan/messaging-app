@@ -1,0 +1,461 @@
+/* ===================================
+   Messaging Interface Styles - Instagram DM Style
+   =================================== */
+
+:root {
+    --chat-sidebar-width: 320px;
+    --message-bubble-radius: 18px;
+    --message-sent-bg: #0095f6;
+    --message-received-bg: #efefef;
+    --message-sent-text: #ffffff;
+    --message-received-text: #262626;
+    --conversation-item-border-radius: 0;
+    --conversation-item-padding: 12px 16px;
+}
+
+/* Layout */
+.h-100 {
+    height: 100vh;
+}
+
+@media (max-width: 768px) {
+    #conversationsSidebar {
+        position: fixed;
+        left: -100%;
+        top: 0;
+        height: 100vh;
+        z-index: 1000;
+        transition: left 0.3s ease;
+        width: 280px;
+        background: white;
+    }
+    
+    #conversationsSidebar.show {
+        left: 0;
+        box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+    }
+}
+
+/* Conversations List - Instagram Style */
+#conversationsList {
+    padding: 0;
+    background: var(--white);
+}
+
+.conversation-item {
+    padding: var(--conversation-item-padding);
+    margin: 0;
+    border-radius: 0;
+    cursor: pointer;
+    transition: background-color 0.15s ease;
+    background: var(--white);
+    border: none;
+    border-bottom: var(--ig-border);
+    position: relative;
+    overflow: hidden;
+}
+
+.conversation-item::before {
+    display: none;
+}
+
+.conversation-item:hover {
+    background: var(--ig-gray-50);
+}
+
+.conversation-item.active {
+    background: var(--white);
+    border-bottom-color: var(--ig-gray-200);
+}
+
+.conversation-item.active::before {
+    display: none;
+}
+
+.conversation-avatar {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    color: white;
+    font-size: 1.125rem;
+    box-shadow: none;
+    border: none;
+    flex-shrink: 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.conversation-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.conversation-avatar::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 14px;
+    height: 14px;
+    background: var(--ig-blue);
+    border: 2px solid white;
+    border-radius: 50%;
+    display: none;
+}
+
+.conversation-item.active .conversation-avatar {
+    border: none;
+    box-shadow: none;
+}
+
+.conversation-info {
+    flex: 1;
+    margin-left: 12px;
+    min-width: 0;
+}
+
+.conversation-name {
+    font-weight: 600;
+    margin-bottom: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: var(--ig-gray-600);
+    font-size: 14px;
+}
+
+.conversation-preview {
+    font-size: 14px;
+    color: var(--ig-gray-500);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.4;
+    font-weight: 400;
+}
+
+.conversation-meta {
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 4px;
+}
+
+.conversation-time {
+    font-size: 12px;
+    color: var(--ig-gray-500);
+    margin-bottom: 0;
+    font-weight: 400;
+}
+
+.conversation-badge {
+    background: var(--ig-blue);
+    color: white;
+    border-radius: 10px;
+    min-width: 18px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 0 6px;
+    box-shadow: none;
+}
+
+/* Messages */
+.message {
+    margin-bottom: 1rem;
+    display: flex;
+    animation: messageSlideIn 0.3s ease-out;
+}
+
+@keyframes messageSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.message.sent {
+    justify-content: flex-end;
+}
+
+.message.received {
+    justify-content: flex-start;
+}
+
+.message-bubble {
+    max-width: 75%;
+    padding: 0.875rem 1.125rem;
+    border-radius: var(--message-bubble-radius);
+    position: relative;
+    word-wrap: break-word;
+    box-shadow: var(--shadow-sm);
+    line-height: 1.5;
+}
+
+.message.sent .message-bubble {
+    background: var(--message-sent-bg);
+    color: var(--message-sent-text);
+    border-bottom-right-radius: 4px;
+    box-shadow: none;
+}
+
+.message.received .message-bubble {
+    background: var(--message-received-bg);
+    color: var(--message-received-text);
+    border: none;
+    border-bottom-left-radius: 4px;
+    box-shadow: none;
+}
+
+.message-text {
+    margin: 0;
+    line-height: 1.5;
+}
+
+.message-meta {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.25rem;
+    font-size: 0.75rem;
+    opacity: 0.8;
+}
+
+.message-status {
+    display: inline-flex;
+}
+
+.message-status i {
+    font-size: 0.875rem;
+}
+
+/* Message Input - Instagram Style */
+#messagesContainer {
+    background: var(--white);
+    scroll-behavior: smooth;
+}
+
+#messageInput {
+    border: none;
+    border-radius: var(--border-radius-xl);
+    padding: 10px 16px;
+    transition: var(--transition);
+    font-size: 14px;
+    background: var(--ig-gray-50);
+}
+
+#messageInput:focus {
+    border: none;
+    box-shadow: none;
+    outline: none;
+    background: var(--white);
+}
+
+#messageInput::placeholder {
+    color: var(--ig-gray-400);
+}
+
+#sendBtn {
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    box-shadow: none;
+    transition: var(--transition);
+    background: var(--ig-blue);
+    color: var(--white);
+}
+
+#sendBtn:hover {
+    background: var(--ig-blue-hover);
+    transform: none;
+    box-shadow: none;
+}
+
+#sendBtn:disabled {
+    opacity: 0.5;
+}
+
+/* Empty State - Instagram Style */
+#emptyChatState {
+    background: var(--white);
+}
+
+.empty-chat-icon {
+    opacity: 0.3;
+    color: var(--ig-gray-400);
+}
+
+/* Typing Indicator */
+.typing-indicator {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.75rem 1rem;
+}
+
+.typing-indicator span {
+    width: 8px;
+    height: 8px;
+    background: #6c757d;
+    border-radius: 50%;
+    animation: typing 1.4s infinite;
+}
+
+.typing-indicator span:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.typing-indicator span:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes typing {
+    0%, 60%, 100% {
+        transform: translateY(0);
+        opacity: 0.7;
+    }
+    30% {
+        transform: translateY(-10px);
+        opacity: 1;
+    }
+}
+
+/* Attachment Preview */
+.attachment-preview {
+    margin-top: 0.5rem;
+    padding: 0.5rem;
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.attachment-preview img {
+    max-width: 100px;
+    max-height: 100px;
+    border-radius: 0.25rem;
+}
+
+/* Scroll to Bottom Button */
+.scroll-to-bottom {
+    position: absolute;
+    bottom: 80px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    box-shadow: var(--shadow);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.scroll-to-bottom:hover {
+    transform: scale(1.1);
+    box-shadow: var(--shadow-lg);
+}
+
+/* Chat Header Enhancements - Instagram Style */
+#activeChat .border-bottom {
+    border-bottom: var(--ig-border) !important;
+    background: var(--white);
+    box-shadow: none;
+}
+
+#chatAvatar {
+    box-shadow: none;
+    border: none;
+}
+
+/* Sidebar Header - Instagram Style */
+#conversationsSidebar .bg-white {
+    background: var(--white) !important;
+    border-bottom: var(--ig-border);
+    box-shadow: none;
+}
+
+#conversationsSidebar .bg-light {
+    background: var(--white) !important;
+}
+
+/* Search Input Enhancement - Instagram Style */
+#searchConversations {
+    border-radius: var(--border-radius);
+    border: none;
+    background: var(--ig-gray-50);
+    font-size: 14px;
+    padding: 8px 12px;
+    transition: var(--transition);
+}
+
+#searchConversations:focus {
+    border: none;
+    background: var(--white);
+    box-shadow: none;
+    outline: none;
+}
+
+#searchConversations::placeholder {
+    color: var(--ig-gray-400);
+}
+
+/* New Conversation Button - Instagram Style */
+#newConversationBtn {
+    box-shadow: none;
+    transition: var(--transition);
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    color: var(--ig-gray-600);
+    border: none;
+}
+
+#newConversationBtn:hover {
+    transform: none;
+    box-shadow: none;
+    color: var(--ig-gray-700);
+    background: var(--ig-gray-50);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .message-bubble {
+        max-width: 85%;
+    }
+    
+    .conversation-item {
+        padding: 0.875rem 1rem;
+    }
+    
+    #conversationsList {
+        padding: 0.5rem;
+    }
+}
+

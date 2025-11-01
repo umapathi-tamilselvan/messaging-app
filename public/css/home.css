@@ -1,0 +1,148 @@
+/* ===================================
+   Home/Landing Page Styles
+   =================================== */
+
+/* Hero Section - Instagram Style */
+.hero-section {
+    background: var(--white);
+    position: relative;
+    overflow: hidden;
+    border-bottom: var(--ig-border);
+}
+
+.hero-section::before {
+    display: none;
+}
+
+.hero-section > .container {
+    position: relative;
+    z-index: 1;
+}
+
+/* Hero Message Cards Animation */
+.hero-image-wrapper {
+    position: relative;
+    height: 400px;
+}
+
+.hero-message-card {
+    position: absolute;
+    background: var(--white);
+    color: var(--ig-gray-600);
+    padding: 1.5rem;
+    border-radius: var(--border-radius-lg);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border: var(--ig-border);
+    width: 280px;
+    animation: float 6s ease-in-out infinite;
+}
+
+.message-card-1 {
+    top: 20%;
+    left: 10%;
+    animation-delay: 0s;
+}
+
+.message-card-2 {
+    top: 50%;
+    right: 10%;
+    animation-delay: 2s;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px) rotate(0deg);
+    }
+    33% {
+        transform: translateY(-20px) rotate(2deg);
+    }
+    66% {
+        transform: translateY(10px) rotate(-2deg);
+    }
+}
+
+/* Feature Cards - Instagram Style */
+.feature-card {
+    height: 100%;
+    border: var(--ig-border);
+    border-radius: var(--border-radius-lg);
+}
+
+.feature-icon {
+    transition: transform 0.2s ease;
+}
+
+.feature-card:hover {
+    border-color: var(--ig-gray-300);
+}
+
+.feature-card:hover .feature-icon {
+    transform: scale(1.05);
+}
+
+/* Authentication Section - Instagram Style */
+#auth-section {
+    background: var(--white);
+}
+
+.auth-card {
+    transition: border-color 0.2s ease;
+    border-radius: var(--border-radius-lg) !important;
+    border: var(--ig-border);
+}
+
+.auth-card:hover {
+    border-color: var(--ig-gray-300);
+    transform: none;
+    box-shadow: var(--shadow) !important;
+}
+
+.auth-icon-wrapper {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--ig-gray-50);
+    border-radius: 50%;
+    transition: transform 0.2s ease;
+}
+
+.auth-card:hover .auth-icon-wrapper {
+    transform: scale(1.05);
+}
+
+.auth-card .list-unstyled li {
+    padding: 0.5rem 0;
+}
+
+.auth-card .list-unstyled li i {
+    font-size: 1.1rem;
+}
+
+/* CTA Section - Instagram Style */
+section.bg-primary {
+    background: var(--ig-blue) !important;
+    border: none;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .hero-image-wrapper {
+        height: 300px;
+        margin-top: 2rem;
+    }
+    
+    .hero-message-card {
+        width: 240px;
+        padding: 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-image-wrapper {
+        display: none;
+    }
+}
+
