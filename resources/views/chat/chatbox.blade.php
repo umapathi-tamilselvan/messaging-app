@@ -46,6 +46,10 @@
     </div>
 </div>
 
+<!-- Hidden data for JavaScript -->
+<span id="current-user-id" data-user-id="{{ $currentUser->id }}" style="display: none;"></span>
+<span id="current-chat-user-id" data-user-id="{{ $user->id }}" style="display: none;"></span>
+
 <!-- Messages Area -->
 <div class="flex-grow-1 overflow-auto p-3" id="chatBody" style="background-color: #e5ddd5; background-image: url('data:image/svg+xml,%3Csvg width=\'100\' height=\'100\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cdefs%3E%3Cpattern id=\'grid\' width=\'100\' height=\'100\' patternUnits=\'userSpaceOnUse\'%3E%3Cpath d=\'M 100 0 L 0 0 0 100\' fill=\'none\' stroke=\'%23e5ddd5\' stroke-width=\'1\'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width=\'100\' height=\'100\' fill=\'url(%23grid)\' /%3E%3C/svg%3E'); min-height: 0;">
     <!-- Empty state for messages -->

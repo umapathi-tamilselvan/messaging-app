@@ -3,6 +3,11 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    @auth
+        <meta name="auth-user" content="true">
+        <span id="current-user-id" data-user-id="{{ Auth::id() }}" style="display: none;"></span>
+    @endauth
     <title>@yield('title', 'Messaging App')</title>
     
     <!-- Bootstrap CSS -->
@@ -88,6 +93,9 @@
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    @auth
+        <script src="{{ asset('js/chat.js') }}"></script>
+    @endauth
     @stack('scripts')
 </body>
 </html>

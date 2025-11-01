@@ -27,7 +27,7 @@
     <div class="row g-0 flex-grow-1" style="height: calc(100vh - 57px);">
         <!-- Sidebar -->
         <aside class="col-12 col-md-4 col-lg-3 border-end bg-white chat-sidebar-wrapper">
-            @include('chat.sidebar', ['user' => $user ?? null])
+            @include('chat.sidebar', ['user' => $user ?? null, 'users' => $users ?? collect(), 'allUsers' => $allUsers ?? collect()])
         </aside>
 
         <!-- Chat Area -->
