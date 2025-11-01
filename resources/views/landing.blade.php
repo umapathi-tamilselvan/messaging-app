@@ -12,16 +12,27 @@
                         <i class="bi bi-chat-dots-fill text-primary" style="font-size: 4rem;"></i>
                     </div>
                     <h1 class="display-4 mb-3 fw-bold text-primary">Welcome to Messaging App</h1>
-                    <p class="lead text-muted mb-5">Connect with your friends and family instantly. Start your messaging journey today!</p>
-                    
-                    <div class="d-grid gap-3 d-md-flex justify-content-md-center">
-                        <a href="{{ route('register') }}" class="btn btn-primary btn-lg px-5">
-                            <i class="bi bi-person-plus"></i> Get Started
-                        </a>
-                        <a href="{{ route('login') }}" class="btn btn-outline-primary btn-lg px-5">
-                            <i class="bi bi-box-arrow-in-right"></i> Login
-                        </a>
-                    </div>
+                    @auth
+                        <p class="lead text-muted mb-5">Welcome back, {{ Auth::user()->name }}! Ready to start chatting?</p>
+                        <div class="d-grid gap-3 d-md-flex justify-content-md-center">
+                            <a href="{{ route('chats.index') }}" class="btn btn-primary btn-lg px-5">
+                                <i class="bi bi-chat-dots"></i> Go to Chats
+                            </a>
+                            <a href="{{ route('profile.show') }}" class="btn btn-outline-primary btn-lg px-5">
+                                <i class="bi bi-person-circle"></i> My Profile
+                            </a>
+                        </div>
+                    @else
+                        <p class="lead text-muted mb-5">Connect with your friends and family instantly. Start your messaging journey today!</p>
+                        <div class="d-grid gap-3 d-md-flex justify-content-md-center">
+                            <a href="{{ route('register') }}" class="btn btn-primary btn-lg px-5">
+                                <i class="bi bi-person-plus"></i> Get Started
+                            </a>
+                            <a href="{{ route('login') }}" class="btn btn-outline-primary btn-lg px-5">
+                                <i class="bi bi-box-arrow-in-right"></i> Login
+                            </a>
+                        </div>
+                    @endauth
 
                     <div class="mt-5 pt-4 border-top">
                         <div class="row text-center">

@@ -12,6 +12,7 @@
     @stack('styles')
 </head>
 <body>
+    @if(!request()->routeIs('chats.*'))
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <div class="container">
             <a class="navbar-brand" href="{{ route('landing') }}">
@@ -23,6 +24,11 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     @auth
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('chats.index') }}">
+                                <i class="bi bi-chat-dots"></i> Chats
+                            </a>
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('profile.show') }}">
                                 <i class="bi bi-person-circle"></i> Profile
@@ -52,8 +58,9 @@
             </div>
         </div>
     </nav>
+    @endif
 
-    <main class="py-4">
+    <main class="@if(request()->routeIs('chats.*')) p-0 @else py-4 @endif">
         @if(session('success'))
             <div class="container">
                 <div class="alert alert-success alert-dismissible fade show" role="alert">
