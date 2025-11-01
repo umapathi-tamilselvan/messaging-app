@@ -13,18 +13,18 @@
     let messagePage = 1;
     let isLoadingMessages = false;
     
-    // DOM Elements
-    const conversationsList = document.getElementById('conversationsList');
-    const messagesContainer = document.getElementById('messagesContainer');
-    const messagesList = document.getElementById('messagesList');
-    const messageForm = document.getElementById('messageForm');
-    const messageInput = document.getElementById('messageInput');
-    const sendBtn = document.getElementById('sendBtn');
-    const emptyChatState = document.getElementById('emptyChatState');
-    const activeChat = document.getElementById('activeChat');
-    const newConversationBtn = document.getElementById('newConversationBtn');
-    const fileInput = document.getElementById('fileInput');
-    const attachBtn = document.getElementById('attachBtn');
+    // DOM Elements - Support both home and chats screen
+    const conversationsList = document.getElementById('conversationsList') || document.getElementById('conversationsListChats');
+    const messagesContainer = document.getElementById('messagesContainer') || document.getElementById('messagesContainerChats');
+    const messagesList = document.getElementById('messagesList') || document.getElementById('messagesListChats');
+    const messageForm = document.getElementById('messageForm') || document.getElementById('messageFormChats');
+    const messageInput = document.getElementById('messageInput') || document.getElementById('messageInputChats');
+    const sendBtn = document.getElementById('sendBtn') || document.getElementById('sendBtnChats');
+    const emptyChatState = document.getElementById('emptyChatState') || document.getElementById('emptyChatStateChats');
+    const activeChat = document.getElementById('activeChat') || document.getElementById('activeChatChats');
+    const newConversationBtn = document.getElementById('newConversationBtn') || document.getElementById('newConversationBtnChats');
+    const fileInput = document.getElementById('fileInput') || document.getElementById('fileInputChats');
+    const attachBtn = document.getElementById('attachBtn') || document.getElementById('attachBtnChats');
     
     // Check authentication
     const authToken = localStorage.getItem('auth_token');
@@ -127,10 +127,19 @@
         
         // Update UI
         renderConversations();
-        emptyChatState.classList.add('d-none');
-        activeChat.classList.remove('d-none');
         
-        // Update chat header
+        // Show active chat and hide empty state
+        if (emptyChatState) emptyChatState.classList.add('d-none');
+        if (activeChat) {
+            activeChat.classList.remove('d-none');
+            // On mobile, hide sidebar when opening chat
+            if (window.innerWidth <= 768) {
+                const sidebar = document.getElementById('chatsSidebar');
+                if (sidebar) sidebar.classList.remove('show');
+            }
+        }
+        
+        // Update chat header - Support both screens
         const conversation = conversations.find(c => c.id === conversationId);
         if (conversation) {
             const otherUser = conversation.users?.find(u => u.id !== getCurrentUserId()) || conversation.users?.[0];
@@ -138,10 +147,31 @@
             const initials = window.utils.getInitials(name);
             const color = window.utils.generateColor(name);
             
-            document.getElementById('chatTitle').textContent = name;
-            document.getElementById('chatSubtitle').textContent = 'Online';
-            document.getElementById('chatAvatarText').textContent = initials;
-            document.getElementById('chatAvatar').style.backgroundColor = color;
+            // Update for home screen
+            const chatTitle = document.getElementById('chatTitle');
+            const chatSubtitle = document.getElementById('chatSubtitle');
+            const chatAvatarText = document.getElementById('chatAvatarText');
+            const chatAvatar = document.getElementById('chatAvatar');
+            
+            // Update for chats screen
+            const chatTitleChats = document.getElementById('chatTitleChats');
+            const chatSubtitleChats = document.getElementById('chatSubtitleChats');
+            const chatAvatarTextChats = document.getElementById('chatAvatarTextChats');
+            const chatAvatarChats = document.getElementById('chatAvatarChats');
+            
+            if (chatTitle) {
+                chatTitle.textContent = name;
+                chatSubtitle.textContent = 'Online';
+                chatAvatarText.textContent = initials;
+                chatAvatar.style.backgroundColor = color;
+            }
+            
+            if (chatTitleChats) {
+                chatTitleChats.textContent = name;
+                chatSubtitleChats.textContent = 'Online';
+                chatAvatarTextChats.textContent = initials;
+                chatAvatarChats.style.backgroundColor = color;
+            }
         }
         
         // Subscribe to real-time updates (will be defined later)
