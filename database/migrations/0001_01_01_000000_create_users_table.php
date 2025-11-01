@@ -13,15 +13,16 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('phone', 15)->unique()->index();
-            $table->string('name')->nullable();
-            $table->string('avatar_url')->nullable();
-            $table->enum('status', ['online', 'offline', 'away'])->default('offline');
-            $table->timestamp('last_seen')->nullable();
-            $table->timestamp('phone_verified_at')->nullable();
+            $table->string('name');
+            $table->string('email')->unique();
+            $table->string('phone')->unique()->nullable();
+            $table->timestamp('email_verified_at')->nullable();
+            $table->string('password');
+            $table->string('profile_picture')->nullable();
+            $table->text('bio')->nullable();
+            $table->string('status')->default('Hey there! I am using Messaging App');
             $table->rememberToken();
             $table->timestamps();
-            $table->softDeletes();
         });
 
         Schema::create('password_reset_tokens', function (Blueprint $table) {

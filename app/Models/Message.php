@@ -3,50 +3,36 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Message extends Model
 {
-    use SoftDeletes;
-
     protected $fillable = [
-        'conversation_id',
-        'user_id',
+        'sender_id',
+        'receiver_id',
         'message',
-        'type',
-        'reply_to_id',
-        'edited_at',
+        'read',
     ];
 
-    protected function casts(): array
+    protected $casts = [
+        'read' => 'boolean',
+        'created_at' => 'datetime',
+        'updated_at' => 'datetime',
+    ];
+
+    /**
+     * Get the sender of the message.
+     */
+    public function sender(): BelongsTo
     {
-        return [
-            'edited_at' => 'datetime',
-        ];
+        return $this->belongsTo(User::class, 'sender_id');
     }
 
-    public function conversation()
+    /**
+     * Get the receiver of the message.
+     */
+    public function receiver(): BelongsTo
     {
-        return $this->belongsTo(Conversation::class);
-    }
-
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
-
-    public function replyTo()
-    {
-        return $this->belongsTo(Message::class, 'reply_to_id');
-    }
-
-    public function attachment()
-    {
-        return $this->hasOne(Attachment::class);
-    }
-
-    public function statuses()
-    {
-        return $this->hasMany(MessageStatus::class);
+        return $this->belongsTo(User::class, 'receiver_id');
     }
 }
